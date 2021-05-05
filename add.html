@@ -81,25 +81,25 @@
 			function getContactFromForm() {
 			  return {
 				name: document.getElementById('name').value,
-				last_name: document.getElementById('last_name').value,
-				address: document.getElementById('address').value,
-				city: document.getElementById('city').value,
-				email: document.getElementById('email').value
 			  };
 			}
-		  window.addEventListener('DOMContentLoaded', (event) => {
-		  var worker = new Worker('webworker.js');
-		  worker.onmessage = function(e) {
-			setFormToContact(e.data);
-		  }
+			function setFormToContact(data){
+			  document.getElementById('name').value = data.name;
+			}
+			
+			  window.addEventListener('DOMContentLoaded', (event) => {
+			  var worker = new Worker('webworker.js');
+			  worker.onmessage = function(e) {
+				setFormToContact(e.data);
+			  }
 
-		  var worker_button = document.getElementById('worker_button');
+			  var worker_button = document.getElementById('worker_button');
 
-		  worker_button.addEventListener('click', function(e) {
-			console.log('Message sent to worker');
-			worker.postMessage(getContactFromForm());
-		  });
-		});
+			  worker_button.addEventListener('click', function(e) {
+				console.log('Message sent to worker');
+				worker.postMessage(getContactFromForm());
+			  });
+			});
 	</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
