@@ -1,17 +1,18 @@
 onmessage = function (e) {
+  console.log('Worker started working');
   var contact = e.data;
-  console.log("in: ", contact);
 
-  for(var key in cuontact){
-    contact[key] = reverseText(contacy[key]);
+  for(var key in contact){
+    contact[key] = reverseText(contact[key]);
   }
 
-  var output = '';
-  console.log("out: ", output);
+  console.log('Worker finished working');
+  postMessage(contact);
 };
 
-function reverseText(text){
-  for (var i = 0, i < text.length; i++) {
+function reverseText(text) {
+  var output = '';
+  for (var i = 0; i < text.length; i++) {
     var character = text[i];
     if (character == character.toLowerCase()) { // The character is lowercase
       output += character.toUpperCase();
@@ -19,5 +20,5 @@ function reverseText(text){
       output += character.toLowerCase();
     }
   }
-  return output
+  return output;
 }
