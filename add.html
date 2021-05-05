@@ -72,12 +72,21 @@
 				<button type="submit" class="btn btn-default">Add Customer</button>
 			</form><br></br>
 			<button type="button" OnClick="GetRandom()" class="btn btn-default">Generate random data</button><br></br>
-			<button class="gen-button" id="worker_button">Run WebWorker</button>
+			<button class="btn btn-default" id="worker_button">Run WebWorker</button>
 
         </div>
       </div>
     </div>
 	<script>
+			function getContactFromForm() {
+			  return {
+				name: document.getElementById('name').value,
+				last_name: document.getElementById('last_name').value,
+				address: document.getElementById('address').value,
+				city: document.getElementById('city').value,
+				email: document.getElementById('email').value
+			  };
+			}
 		  window.addEventListener('DOMContentLoaded', (event) => {
 		  var worker = new Worker('webworker.js');
 		  worker.onmessage = function(e) {
