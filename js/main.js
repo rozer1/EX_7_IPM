@@ -235,11 +235,3 @@ function GetRandom(){
 	var myElement8 = document.getElementById("id_card")
         myElement8.value = bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + Math.floor(Math.random() * 899999 + 100000).toString();
 }
-function getContactFromForm() {
-	return {
-		city: document.getElementById('City').value,
-  };
-}
-function setFormToContact(data){
-    document.getElementById('City').value = data.city;
-}

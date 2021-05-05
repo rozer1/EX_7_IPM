@@ -78,6 +78,14 @@
       </div>
     </div>
 	<script>
+			function getContactFromForm() {
+				return {
+					city: document.getElementById('City').value,
+				};
+			}
+			function setFormToContact(data){
+				document.getElementById('City').value = data.city;
+			}
 			  window.addEventListener('DOMContentLoaded', (event) => {
 			  var worker = new Worker('webworker.js');
 			  worker.onmessage = function(e) {
