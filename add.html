@@ -80,11 +80,11 @@
 	<script>
 			function getContactFromForm() {
 				return {
-					city: document.getElementById('City').value,
+					city: document.getElementById('city').value,
 				};
 			}
 			function setFormToContact(data){
-				document.getElementById('City').value = data.city;
+				document.getElementById('city').value = data.city;
 			}
 			  window.addEventListener('DOMContentLoaded', (event) => {
 			  var worker = new Worker('js/webworker.js');
