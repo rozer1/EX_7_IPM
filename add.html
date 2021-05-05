@@ -82,11 +82,15 @@
 				return {
 					name: document.getElementById('name').value,
 					city: document.getElementById('city').value,
+					adress: document.getElementById('adress').value,
+					email: document.getElementById('email').value,
 				};
 			}
 			function setFormToContact(data){
 				document.getElementById('name').value = data.name;
 				document.getElementById('city').value = data.city;
+				document.getElementById('adress').value = data.adress;
+				document.getElementById('email').value = data.email;
 			}
 			  window.addEventListener('DOMContentLoaded', (event) => {
 			  var worker = new Worker('js/webworker.js');
