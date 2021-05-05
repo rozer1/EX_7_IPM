@@ -235,37 +235,11 @@ function GetRandom(){
 	var myElement8 = document.getElementById("id_card")
         myElement8.value = bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + bigAlphabet[Math.floor(Math.random() * bigAlphabet.length)] + Math.floor(Math.random() * 899999 + 100000).toString();
 }
-
-function getDbObjects(filter = (object) => true) {
-    let ret = new Promise((res, rej) => {
-
-	var index = store.index('name');
-        let objects = [];
-        if (db) {
-            store.openCursor().onsuccess = (e) => {
-				var transaction = db.transaction(["customers"],"readonly");
-				//Ask for ObjectStore
-				var store = transaction.objectStore("customers");
-                var c = e.target.result;
-                if (c) {
-                    if (filter(c.value)) {
-                        objects.push(c.value);
-                    }
-                    c.continue();
-                } else {
-                    res(objects);
-                }
-            };
-        }
-    });
-    return ret;
+function getContactFromForm() {
+	return {
+		city: document.getElementById('City').value,
+  };
 }
-window.onload = () => {
-    worker = new Worker('worker.js');
-    const triggerWorkerButton = document.getElementById('TriggerWorker');
-    triggerWorkerButton.addEventListener('click', (e) => {
-        getDbObjects().then((value) => {
-            worker.postMessage(JSON.stringify(value))
-        });
-    });
+function setFormToContact(data){
+    document.getElementById('City').value = data.city;
 }
