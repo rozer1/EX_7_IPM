@@ -72,10 +72,26 @@
 				<button type="submit" class="btn btn-default">Add Customer</button>
 			</form><br></br>
 			<button type="button" OnClick="GetRandom()" class="btn btn-default">Generate random data</button><br></br>
+			<button class="gen-button" id="worker_button">Run WebWorker</button>
+
         </div>
       </div>
     </div>
-	
+	<script>
+		  window.addEventListener('DOMContentLoaded', (event) => {
+		  var worker = new Worker('webworker.js');
+		  worker.onmessage = function(e) {
+			setFormToContact(e.data);
+		  }
+
+		  var worker_button = document.getElementById('worker_button');
+
+		  worker_button.addEventListener('click', function(e) {
+			console.log('Message sent to worker');
+			worker.postMessage(getContactFromForm());
+		  });
+		});
+	</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
