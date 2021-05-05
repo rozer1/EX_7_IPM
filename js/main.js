@@ -213,7 +213,7 @@ function GetRandom(){
 	var name = capFirst(name1[getRandomInt(0, name1.length + 1)]) + ' ' + capFirst(name2[getRandomInt(0, name2.length + 1)]);
 	
 	var City1 = ["Łódź","Warszawa","Wrocław","Gdańsk","Pabianice","Gdynia","Poznań"];
-	var City = capFirst(City1[getRandomInt(0, City1.length + 1)]);
+	var City = capFirst(City1[getRandomInt(0, City1.length)]);
 	
 	var adress1 = ["Wólczańska","Racławicka","Pabianicka","AlejaPolitechniki","Piotrkowska","Narutowicza","Radwańska","Przmysłowa"];
 	var adress = capFirst(adress1[getRandomInt(0, City1.length + 1)]) + ' ' + getRandomIntInclusive(1, 222);
