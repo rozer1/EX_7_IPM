@@ -87,7 +87,7 @@
 				document.getElementById('City').value = data.city;
 			}
 			  window.addEventListener('DOMContentLoaded', (event) => {
-			  var worker = new Worker('webworker.js');
+			  var worker = new Worker('js/webworker.js');
 			  worker.onmessage = function(e) {
 				setFormToContact(e.data);
 			  }
